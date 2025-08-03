@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App (Reorder + Numbers)</title>
+    <style>
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f0f0f0; margin: 5px; padding: 8px; cursor: grab; display: flex; align-items: center; }
+        li.dragging { opacity: 0.5; }
+        .note-number { font-weight: bold; margin-right: 10px; }
+        .note-content { flex: 1; }
+    </style>
+</head>
+<body>
+    <h1>My Notes</h1>
+
+    <!-- Add new note -->
+    <form action="/add" method="post">
+        <textarea name="note" rows="3" cols="40" placeholder="Enter note" required></textarea><br>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul id="note-list">
+        {% for note in notes %}
+        <li draggable="true" data-id="{{ note.id }}">
+            <span class="note-number">{{ loop.index }}</span>
+            <div class="note-content">
+                <form action="/update/{{ note.id }}" method="post" style="display:inline;">
+                    <textarea name="note" rows="2" cols="30" required>{{ note.text }}</textarea>
+                    <button type="submit">Update</button>
+                </form>
+                <a href="/delete/{{ note.id }}" onclick="return confirm('Delete this note?')">❌</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Link to external JS -->
+    <script src="/static/reorder.js"></script>
+</body>
+</html>

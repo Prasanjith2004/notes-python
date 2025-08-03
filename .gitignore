@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
