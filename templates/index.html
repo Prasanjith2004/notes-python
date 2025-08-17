@@ -7,7 +7,6 @@
 <body>
     <h1>My Notes</h1>
 
-    <!-- Add new note -->
     <form action="/add" method="post">
         <textarea name="note" rows="3" cols="40" placeholder="Enter note" required></textarea><br>
         <button type="submit">Add</button>
@@ -28,7 +27,6 @@
         {% endfor %}
     </ul>
 
-    <!-- Link to external JS -->
     <script src="/static/reorder.js"></script>
 </body>
 </html>
